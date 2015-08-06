@@ -1,0 +1,1 @@
+AppVeyorSampl2 readme

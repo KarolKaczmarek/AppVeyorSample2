@@ -49,7 +49,7 @@ before_deploy:
       
       # Creating NuGet package artifact
       New-Item nuget -ItemType Directory > $null
-      nuget pack .\lib\Package.nuspec -outputdirectory .\nuget
+      nuget pack .\lib\Package2.nuspec -outputdirectory .\nuget
       $nuGetPackagePath = (Get-ChildItem .\nuget).FullName
       
       @(

@@ -4,7 +4,9 @@
 
 install: 
   - cinst -y pester
-      
+  - git clone https://github.com/KarolKaczmarek/AppVeyorSampleHelper
+  - cd AppVeyorSampleHelper
+  - Import-Module TestHelper.psm1 -force
 
 #---------------------------------# 
 #      build configuration        # 
@@ -49,7 +51,8 @@ before_deploy:
       
       # Creating NuGet package artifact
       New-Item nuget -ItemType Directory > $null
-      nuget pack .\lib\Package2.nuspec -outputdirectory .\nuget
+      New-Nuspec -packageName $env:APPVEYOR_PROJECT_NAME -version $env:APPVEYOR_BUILD_VERSION -author "MS" -owners "MS" -licenseUrl "https://github.com/PowerShell/DscResources/blob/master/LICENSE" -projectUrl "https://github.com/$($env:APPVEYOR_REPO_NAME)" -packageDescription $env:APPVEYOR_PROJECT_NAME -tags "DesiredStateConfiguration DSC DSCResourceKit" -destinationPath .\lib
+      nuget pack ".\lib\$($env:APPVEYOR_PROJECT_NAME)).nuspec" -outputdirectory .\nuget
       $nuGetPackagePath = (Get-ChildItem .\nuget).FullName
       
       @(

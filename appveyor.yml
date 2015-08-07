@@ -9,7 +9,7 @@ install:
   - cd AppVeyorSampleHelper
   - ps: Import-Module .\TestHelper.psm1 -force
   - ps: Pop-Location
-  
+
 #---------------------------------# 
 #      build configuration        # 
 #---------------------------------# 
@@ -79,6 +79,7 @@ deploy:
     draft: false
     prerelease: false
     on:
+      #branch: dev
       # Determines whether to deploy only on regular commits or commits with tags
       appveyor_repo_tag: false 
 
@@ -98,5 +99,3 @@ deploy:
 #---------------------------------# 
         
         
-        
-

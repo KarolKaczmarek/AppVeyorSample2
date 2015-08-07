@@ -1,2 +1,2 @@
 # AppVeyorSample2
-test
+test2
